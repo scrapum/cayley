@@ -5,6 +5,7 @@ Cayley is an open-source graph inspired by the graph database behind [Freebase](
 
 Its goal is to be a part of the developer's toolbox where [Linked Data](http://linkeddata.org/) and graph-shaped data (semantic webs, social networks, etc) in general are concerned.
 
+[![Build Status](https://travis-ci.org/google/cayley.png?branch=master)](https://travis-ci.org/google/cayley)
 
 ## Features
 
@@ -14,7 +15,7 @@ Its goal is to be a part of the developer's toolbox where [Linked Data](http://l
   * or a REPL if you prefer
 * Built-in query editor and visualizer
 * Multiple query languages:
-  * Javascript, with a [Gremlin](http://gremlindocs.com/)-inspired\* graph object.
+  * JavaScript, with a [Gremlin](http://gremlindocs.com/)-inspired\* graph object.
   * (simplified) [MQL](https://developers.google.com/freebase/v1/mql-overview), for Freebase fans
 * Plays well with multiple backend stores:
   * [LevelDB](http://code.google.com/p/leveldb/) for single-machine storage
@@ -28,39 +29,13 @@ Rough performance testing shows that, on consumer hardware and an average disk, 
 
 \* Note that while it's not exactly Gremlin, it certainly takes inspiration from that API. For this flavor, [see the documentation](docs/GremlinAPI.md).
 
-## Building
-Make sure you have the right packages installed. Mostly, this is just Go as a dependency, and different ways of pulling packages.
+## Getting Started
 
-### Linux
-**Ubuntu / Debian**
+Grab the latest [release binary](http://github.com/google/cayley/releases) and extract it wherever you like.
 
-`sudo apt-get install golang git bzr mercurial make`
+If you prefer to build from source, see the documentation on the wiki at [How to start hacking on Cayley](https://github.com/google/cayley/wiki/How-to-start-hacking-on-Cayley)
 
-**RHEL / Fedora**
-
-`sudo yum install golang git bzr mercurial make gcc`
-
-
-**OS X**
-
-[Homebrew](http://brew.sh) is the preferred method. 
-
-`brew install bazaar mercurial git go`
-
-**Clone and build**
-
-Now you can clone the repository and build the project.
-
-```bash
-git clone git@github.com:google/cayley.git
-cd cayley
-make deps
-make
-```
-
-And the `cayley` binary will be built and ready.
-
-Give it a quick test with:
+`cd` to the directory and give it a quick test with:
 ```
 ./cayley repl --dbpath=testdata.nt 
 ```
@@ -71,7 +46,7 @@ You should see a `cayley>` REPL prompt. Go ahead and give it a try:
 // Simple math
 cayley> 2 + 2
 
-// Javascript syntax
+// JavaScript syntax
 cayley> x = 2 * 8
 cayley> x
 
@@ -105,7 +80,7 @@ And visit port 64210 on your machine, commonly [http://localhost:64210](http://l
 
 ## Running queries
 
-The default environment is based on [Gremlin](http://gremlindocs.com/) and is simply a Javascript environment. If you can write jQuery, you can query a graph.
+The default environment is based on [Gremlin](http://gremlindocs.com/) and is simply a JavaScript environment. If you can write jQuery, you can query a graph.
 
 You'll notice we have a special object, `graph` or `g`, which is how you can interact with the graph. 
 
@@ -156,7 +131,7 @@ g.V().Has("name", "Casablanca").Follow(filmToActor).Out("name").All()
 
 ```
 
-There's more in the Javascript API Documentation, but that should give you a feel for how to walk around the graph.
+There's more in the JavaScript API Documentation, but that should give you a feel for how to walk around the graph.
 
 ## Disclaimer
 
